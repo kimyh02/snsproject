@@ -30,10 +30,10 @@
       <br>
       <form class="form-signin" style="width:20%; display: table; margin-left: auto;margin-right:auto;" onsubmit="return false;">
         <h1 class="h3 mb-3 font-weight-normal">MyOtherFriend</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" v-model="input.Email" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="input.Password" required>
+        <label for="inputEmail" class="sr-only">휴대폰 번호 또는 이메일 주소</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="휴대폰 번호 또는 이메일 주소" v-model="input.Email" required autofocus>
+        <label for="inputPassword" class="sr-only">비밀번호</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" v-model="input.Password" required>
         <button class="btn btn-lg btn-dark btn-block" v-on:click="login()">로그인</button>
         <router-link to="/signup"><button type="submit" class="btn btn-lg btn-navy btn-block">회원가입</button></router-link>
   
@@ -67,7 +67,7 @@
           Email: "",
           Password: ""
         },
-        dataUrl: "https://www.abc.com"
+        dataUrl: "https://04klf6kb8l.execute-api.ap-northeast-2.amazonaws.com/v1/snsproject?fn=login"
       }
     },
     methods: {
@@ -75,8 +75,8 @@
         // post로 보내기
         this.$http.post(this.dataUrl, this.input).then((res) => {
           console.log(res);
+          this.$router.replace('/main');
         });
-  
       }
     }
   }
